@@ -1,0 +1,14 @@
+{% macro overview_index(galleries) -%}
+
+<div class="row">
+  <div class="col gallery">
+    {% for gallery in galleries %}
+       <a href="/{{ gallery.pathname }}">
+         <img src="/{{ gallery.pathname }}/images/thumbnails/{{ gallery.overview_photo }}" class="thumbnail rounded" alt="{{ gallery.name }}">
+          <div class="overviewcaption"> {{ gallery.name }} </div>
+         </a>
+    {% endfor %}
+  </div>
+</div>
+
+{%- endmacro %}

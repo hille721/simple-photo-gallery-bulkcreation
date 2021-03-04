@@ -1,0 +1,10 @@
+# installs dependencies from ./setup.cfg, and the package itself,
+# in editable mode
+-e .
+
+# dev tools
+pylint
+pep8
+setuptools
+wheel
+pytest

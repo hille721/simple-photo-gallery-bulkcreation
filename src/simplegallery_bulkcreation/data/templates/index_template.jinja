@@ -1,0 +1,57 @@
+{% import 'galleryoverview_macros.jinja' as galleryoverview_macros %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta property="og:title" content="{{ defaults.title }}">
+  <meta property="og:description" content="{{ defaults.description }}">
+  <meta property="og:image" content="{{ defaults.title_photo }}">
+  <meta property="og:url" content="">
+  <meta property="og:site_name" content="">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/default-skin.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200&display=swap" rel="stylesheet">
+
+  <title>{{ defaults.title }}</title>
+
+
+  <style>
+    .header-image {
+      background: #333366 url("{{ defaults.title_photo }}");
+      background-position: {{ defaults.title_photo_offset }}%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="jumbotron header-image">
+    <div class="header-info">
+      <h1><b>{{ defaults.title }}</b></h1>
+      <div class="header-info-details"><b>{{ defaults.description }}</b></div>
+    </div>
+  </div>
+
+
+  <!-- GALLERY DESCRIPTIONS -->
+  {{ galleryoverview_macros.overview_index(galleries) }}
+  <!-- END GALLERY DESCRIPTIONS -->
+
+ </div>
+
+ <footer class="container-fluid text-right">
+  <p>Created by <a rel="noreferrer" href="https://github.com/hille721/simple-photo-gallery-bulkcreation/">Simple Photo Gallery - Bulk Creation</a> &
+                <a rel="noreferrer" href="https://www.haltakov.net/simple-photo-gallery">Simple Photo Gallery</a></p>
+ </footer>
+</body>
+
+</html>
