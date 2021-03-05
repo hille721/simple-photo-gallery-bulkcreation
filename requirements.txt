@@ -4,6 +4,7 @@
 
 # dev tools
 pylint
+flake8
 pep8
 setuptools
 wheel

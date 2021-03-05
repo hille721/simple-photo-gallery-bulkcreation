@@ -2,11 +2,12 @@
 
 import json
 from pathlib import Path
-import pkg_resources
 import shutil
 
+import pkg_resources
+
 import simplegallery.common as spg_common
-from simplegallery import gallery_init, gallery_build
+from simplegallery import gallery_build
 from simplegallery.logic.gallery_logic import get_gallery_logic
 
 
@@ -22,6 +23,22 @@ def _pltostr(path):
     return str(path.absolute())
 
 class SimpleGallery:
+    '''
+    Object class for one gallery
+
+    Args:
+        root_dir (str): path to the root directory of the gallery overview
+        name (str, optional): gallery name. Defaults to ''.
+        pathname (str, optional): gallery pathname. Defaults to ''.
+        image_source (str, optional): image source directory. Defaults to '.'.
+        description (str, optional): description of the gallery. Defaults to ''.
+        background_photo (str, optional): background picture of the gallery. Defaults to "".
+        background_photo_offset (int, optional): background picture offset. Defaults to 30.
+        url (str, optional): url of the gallery. Defaults to "".
+
+    Raises:
+        RuntimeError: will be raised for any error
+    '''
 
     def __init__(self, root_dir, name='', pathname='', image_source='.', description='',
                  background_photo="", background_photo_offset=30,
@@ -47,8 +64,8 @@ class SimpleGallery:
             raise RuntimeError(f'image source directory {image_source} does not exists')
 
     def _create_gallery_json(self):
+        ''' Build the gallery config '''
 
-        # Initialize the gallery config with the main gallery paths
         gallery_config = dict(
             images_data_file=_pltostr(self.gallery_path / 'images_data.json'),
             public_path=_pltostr(self.public_gallery_dir),
@@ -73,9 +90,11 @@ class SimpleGallery:
 
     def _create_folder_structure(self):
         '''
-        Creates the gallery folder structure by copying all the gallery templates and moving all images and videos to the
+        Creates the gallery folder structure by copying all the gallery templates
+        and moving all images and videos to the
         photos subfolder.
-        We can't use `simplegallery.gallery-init.create_gallery_folder_structure` because there is no possibility to set
+        We can't use `simplegallery.gallery-init.create_gallery_folder_structure`
+        because there is no possibility to set
         another public folder
         '''
         # Copy the public and templates folder
@@ -108,6 +127,15 @@ class SimpleGallery:
                 shutil.copy(path, photos_dir / path.name)
 
     def gallery_init(self):
+        '''
+        Build up the gallery structure.
+
+        Raises:
+            RuntimeError: if there is any description
+
+        Returns:
+            bool: returns True if everything worked fine
+        '''
 
         # create galaxy json
         if not self._create_gallery_json():
@@ -121,7 +149,20 @@ class SimpleGallery:
 
         return True
 
-    def gallery_build(self, fore_thumbnail_regeneration=False):
+    def gallery_build(self, force_thumbnail_regeneration=False):
+        '''
+        Build the gallery (create thumbnails)
+
+        Args:
+            force_thumbnail_regeneration (bool, optional):
+                Force to re-generate all thumbnails. Defaults to False.
+
+        Raises:
+            RuntimeError: will be raised if there is any error
+
+        Returns:
+            bool: returns True if everything worked fine
+        '''
 
         gallery_config_path = _pltostr(self.gallery_config_path)
         gallery_config = spg_common.read_gallery_config(gallery_config_path)
@@ -135,7 +176,7 @@ class SimpleGallery:
         gallery_logic = get_gallery_logic(gallery_config)
 
         spg_common.log(f"Generating thumbnails for {self.name}...")
-        gallery_logic.create_thumbnails(fore_thumbnail_regeneration)
+        gallery_logic.create_thumbnails(force_thumbnail_regeneration)
 
         spg_common.log(f"Generating the images_data.json file for {self.name}...")
         gallery_logic.create_images_data_file()
