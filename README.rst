@@ -1,3 +1,10 @@
+.. image:: https://github.com/hille721/simple-photo-gallery-bulkcreation/workflows/build/badge.svg
+    :alt: Built Status
+    :target: https://github.com/hille721/simple-photo-gallery-bulkcreation/actions?query=workflow%3Abuild
+.. image:: https://img.shields.io/pypi/v/simple-photo-gallery-bulkcreation.svg
+    :alt: PyPI-Server
+    :target: https://pypi.org/project/simple-photo-gallery-bulkcreation/
+
 =================================
 simple-photo-gallery-bulkcreation
 =================================
