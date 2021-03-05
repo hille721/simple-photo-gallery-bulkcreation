@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 '''main functions of the nestedphotogallery package'''
 
-from pathlib import Path
+import argparse
 import configparser
+from pathlib import Path
+import pkg_resources
 import shutil
 import sys
 
@@ -10,6 +12,20 @@ import jinja2
 
 from simplegallery_bulkcreation.galleryclass import SimpleGallery
 
+def parse_args():
+    """
+    Configures the argument parser
+    """
+
+    description = "Plugin for the simple-photo-gallery"
+    parser = argparse.ArgumentParser(description=description)
+
+    parser.add_argument(
+        "config_file",
+        help="Config file which should be used.",
+    )
+
+    return parser.parse_args()
 
 def read_config(config_path='./config-example.ini'):
     ''' read config file '''
@@ -74,9 +90,14 @@ def create_overview_public(root_dir, data_path, defaults, galleries):
 
 def main():
 
-    #TODO: Change this
-    config_path = "config-example.ini"
-    data_path = "src/simplegallery_bulkcreation/data/"
+    # Parse the arguments
+    args = parse_args()
+    print(args)
+    config_path = Path(args.config_file)
+
+    if not config_path.is_file():
+        sys.exit(f'Config file {config_path.absolute()} not found')
+    data_path = Path(pkg_resources.resource_filename("simplegallery_bulkcreation", "data"))
 
     defaults, galleries = read_config(config_path=config_path)
     root_dir = defaults['gallery_root']
