@@ -12,7 +12,7 @@ simple-photo-gallery-bulkcreation
 Plugin for the `Simple Photo Gallery <https://github.com/haltakov/simple-photo-gallery>`_
 which provides a config based bulk creation of multiple galleries from multiple folders of photos.
 
-.. image:: example/gallery_overview_example.jpg
+.. image:: https://raw.githubusercontent.com/hille721/simple-photo-gallery-bulkcreation/master/example/gallery_overview_example.jpg
    :alt: gallery overview
 
 Description
