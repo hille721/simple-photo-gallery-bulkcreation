@@ -48,3 +48,5 @@ cover/*
 # Per-project virtualenvs
 .venv*
 .vscode*
+
+example/own*
