@@ -10,13 +10,13 @@ simple-photo-gallery-bulkcreation
 =================================
 
 Plugin for the `Simple Photo Gallery <https://github.com/haltakov/simple-photo-gallery>`_
-which provides an config based bulk creation of multiple galleries from multiple folders of photos.
+which provides a config based bulk creation of multiple galleries from multiple folders of photos.
 
 Description
 ===========
 
 This plugin comes with a further command for the `Simple Photo Gallery <https://github.com/haltakov/simple-photo-gallery>`_:
-`gallery-bulkcreation`
+:code:`gallery-bulkcreation`
 
 Installation
 ============
@@ -29,7 +29,7 @@ Configuration file
 ==================
 
 The configuration file is in a simple ini format.
-At first there has to be a general DEFAULT section with some general setting.
+At first there has to be a general DEFAULT section with some general settings.
 Then there is one section per gallery.
 
 .. code-block::
