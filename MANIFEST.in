@@ -1,0 +1,3 @@
+# Include the data files for .tar.gz legacy support
+recursive-include src/simplegallery_bulkcreation/data/templates *
+recursive-include src/simplegallery_bulkcreation/data/public *

@@ -100,7 +100,7 @@ def create_overview_public(root_dir, data_path, defaults, galleries):
     # move css into public directory
     shutil.copytree(data_dir / 'public', public_dir, dirs_exist_ok=True)
     if title_photo.exists():
-        shutil.copy(title_photo, data_dir / 'public' / title_photo.name)
+        shutil.copy(title_photo, public_dir / title_photo.name)
         defaults['title_photo'] = title_photo.name
 
     # generate root index.html
