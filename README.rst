@@ -55,7 +55,7 @@ Then there is one section per gallery.
     image_source = /home/max/Pictures/Greek2019
     background_photo = 2019-09-02_11-37-01.jpg
 
-Check out the `example <https://github.com/hille721/simple-photo-gallery-bulkcreation/example>`_.
+Check out the `example <https://github.com/hille721/simple-photo-gallery-bulkcreation/tree/master/example>`_.
 
 Usage
 =====
