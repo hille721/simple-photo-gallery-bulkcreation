@@ -12,6 +12,9 @@ simple-photo-gallery-bulkcreation
 Plugin for the `Simple Photo Gallery <https://github.com/haltakov/simple-photo-gallery>`_
 which provides a config based bulk creation of multiple galleries from multiple folders of photos.
 
+.. image:: example/gallery_overview_example.jpg
+   :alt: gallery overview
+
 Description
 ===========
 
@@ -51,6 +54,8 @@ Then there is one section per gallery.
     description = Island hoping in Greece
     image_source = /home/max/Pictures/Greek2019
     background_photo = 2019-09-02_11-37-01.jpg
+
+Check out the `example <https://github.com/hille721/simple-photo-gallery-bulkcreation/example>`_.
 
 Usage
 =====
