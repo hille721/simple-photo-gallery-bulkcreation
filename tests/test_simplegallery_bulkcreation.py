@@ -1,4 +1,4 @@
-import pytest
+# import pytest
 
 from simplegallery_bulkcreation import core
 

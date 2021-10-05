@@ -70,7 +70,7 @@ class SimpleGallery:
             self.gallery_path.mkdir(parents=True)
 
         if not self.image_source.exists():
-            ### TODO: Implement Error Handling
+            # TODO: Implement Error Handling
             raise RuntimeError(f"image source directory {image_source} does not exists")
 
     def _create_gallery_json(self):
@@ -149,7 +149,7 @@ class SimpleGallery:
 
         # create galaxy json
         if not self._create_gallery_json():
-            ### TODO: Implement Error Handling
+            # TODO: Implement Error Handling
             raise RuntimeError(f"create gallery json failed for {self.name}")
 
         # create folder structure
@@ -181,7 +181,7 @@ class SimpleGallery:
             spg_common.log(
                 f"Cannot load the gallery.json file ({gallery_config_path})!"
             )
-            ### TODO: Implement Error Handling
+            # TODO: Implement Error Handling
             raise RuntimeError
 
         # Get the gallery logic
