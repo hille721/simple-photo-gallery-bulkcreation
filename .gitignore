@@ -49,4 +49,5 @@ cover/*
 .venv*
 .vscode*
 
-example/own*
+# will be created by unitttests
+example/gallery

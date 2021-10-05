@@ -3,9 +3,11 @@
 -e .
 
 # dev tools
-pylint
+black
 flake8
-pep8
-setuptools
-wheel
+pylint
 pytest
+pytest-black
+pytest-coverage
+pytest-flake8
+pytest-pylint
