@@ -11,3 +11,4 @@ wheel
 pytest
 black
 pytest-black
+pytest-pylint
