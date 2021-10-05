@@ -9,3 +9,5 @@ pep8
 setuptools
 wheel
 pytest
+black
+pytest-black
