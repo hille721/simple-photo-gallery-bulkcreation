@@ -38,28 +38,44 @@ Then there is one section per gallery.
 .. code-block::
 
     [DEFAULT]
-    gallery_root = /home/max/gallery
-    title = Vacation
+    gallery_root = example/gallery
+    title = My vacations
     description = The best days of the year
-    title_photo = /home/max/Pictures/Mexico2017/2017-11-01_15-51-29.jpg
+    title_photo = example/pictures/mexico2017/2017-11-01_15-20-23.jpg
     title_photo_offset = 20
 
     [Oman 2020]
     description = Some days in the orient
-    image_source = /home/max/Pictures/Oman2020
+    image_source = example/pictures/oman2020
     background_photo = 2020-02-02_18-40-33.jpg
-    background_photo_offset = 50
 
     [Greece 2019]
     description = Island hoping in Greece
-    image_source = /home/max/Pictures/Greek2019
-    background_photo = 2019-09-02_11-37-01.jpg
-
-Check out the `example <https://github.com/hille721/simple-photo-gallery-bulkcreation/tree/master/example>`_.
+    image_source = example/pictures/greece2019
+    background_photo = 2019-08-29_10-19-43.jpg
+    background_photo_offset = 40
 
 Usage
 =====
 
+After the creation of a `config.ini`, the creation is pretty easy via running following command:
+
 .. code-block::
 
     gallery-bulkcreation config-example.ini
+
+If everything works correctly you can preview the result via following command:
+
+.. code-block::
+
+    python3 -m http.server --directory $GALLERY_ROOT/public
+
+and then checking it under the url http://localhost:8000 in your browser.
+
+
+If you add photos to already existing galleries or add new galleries in the `config.ini` you can simple update the gallery by running the command again.
+
+Example
+-------
+
+Check out the `example <https://github.com/hille721/simple-photo-gallery-bulkcreation/tree/master/example>`_.
