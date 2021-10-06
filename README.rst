@@ -74,7 +74,8 @@ and then checking it in your browser under http://localhost:8000.
 
 If you add photos to already existing galleries or add new galleries in the `config.ini` you can simple update the gallery by running the command again.
 
+
 Example
--------
+=======
 
 Check out the `example <https://github.com/hille721/simple-photo-gallery-bulkcreation/tree/master/example>`_.
