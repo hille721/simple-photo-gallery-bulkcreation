@@ -10,7 +10,11 @@ import sys
 import jinja2
 import pkg_resources
 
+from simplegallery_bulkcreation.utils import copytree
 from simplegallery_bulkcreation.galleryclass import SimpleGallery, spg_common
+
+if sys.version_info.major < 3:
+    sys.exit("Python 2 not supported!")
 
 
 def parse_args():
@@ -96,7 +100,7 @@ def create_overview_public(root_dir, data_path, defaults, galleries):
     spg_common.log(f"Creating overview index page under {public_dir}...")
 
     # move css into public directory
-    shutil.copytree(data_dir / "public", public_dir, dirs_exist_ok=True)
+    copytree(data_dir / "public", public_dir)
     if title_photo.exists():
         shutil.copy(title_photo, public_dir / title_photo.name)
         defaults["title_photo"] = title_photo.name
