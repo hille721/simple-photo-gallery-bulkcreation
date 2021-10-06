@@ -3,7 +3,7 @@ import sys
 
 if sys.version_info.major < 3:
     sys.exit("Python 2 not supported!")
-if sys.version_info.major == 3 and sys.version_info.minor < 8:
+if sys.version_info.major == 3 and sys.version_info.minor < 18:
     from distutils.dir_util import copy_tree
 
     LEGACY_SUPPORT = True
@@ -39,6 +39,8 @@ def copytree(src, dst):
         dst (Path object): destination path
     """
     if LEGACY_SUPPORT:
+        if not dst.parent.exists():
+            dst.parent.mkdir(parents=True)
         return copy_tree(pltostr(src), pltostr(dst))
 
     return shutil.copytree(  # pylint: disable=unexpected-keyword-arg
