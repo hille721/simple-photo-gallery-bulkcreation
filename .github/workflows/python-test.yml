@@ -29,7 +29,7 @@ jobs:
         python -m pip install -U pip
         python -m pip install -U setuptools wheel
         python -m pip install -r requirements.txt
-    - name: Test with black, flake8, pylint & pytest
-      run: pytest -v --black --flake8 --pylint --pylint-error-types=EF --cov=src/simplegallery_bulkcreation
+    - name: Running tests
+      run: pytest
     - name: Run gallery-bulkcreation command
       run: gallery-bulkcreation example/config-example.ini
