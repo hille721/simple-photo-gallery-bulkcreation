@@ -10,6 +10,8 @@ import simplegallery.common as spg_common
 from simplegallery import gallery_build
 from simplegallery.logic.gallery_logic import get_gallery_logic
 
+from simplegallery_bulkcreation.utils import copytree
+
 
 def _pltostr(path):
     """
@@ -111,15 +113,13 @@ class SimpleGallery:
         """
         # Copy the public and templates folder
         spg_common.log("Copying gallery template files...")
-        shutil.copytree(
+        copytree(
             Path(pkg_resources.resource_filename("simplegallery", "data/templates")),
             self.gallery_path / "templates",
-            dirs_exist_ok=True,
         )
-        shutil.copytree(
+        copytree(
             Path(pkg_resources.resource_filename("simplegallery", "data/public")),
             self.public_gallery_dir,
-            dirs_exist_ok=True,
         )
 
         photos_dir = self.public_gallery_dir / "images" / "photos"

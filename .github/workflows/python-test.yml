@@ -41,5 +41,5 @@ jobs:
         python -m pip install -r requirements.txt
     - name: Running tests
       run: pytest
-    - name: Run gallery-bulkcreation command
-      run: gallery-bulkcreation example/config-example.ini
+    - name: Run gallery-bulkcreation command twice
+      run: gallery-bulkcreation example/config-example.ini; gallery-bulkcreation example/config-example.ini
