@@ -1,8 +1,8 @@
-.. image:: https://github.com/hille721/simple-photo-gallery-bulkcreation/workflows/build/badge.svg
-    :alt: Built Status
-    :target: https://github.com/hille721/simple-photo-gallery-bulkcreation/actions?query=workflow%3Abuild
+.. image:: https://github.com/hille721/simple-photo-gallery-bulkcreation/actions/workflows/python-test.yml/badge.svg
+    :alt: build
+    :target: https://github.com/hille721/simple-photo-gallery-bulkcreation/actions/workflows/python-test.yml
 .. image:: https://img.shields.io/pypi/v/simple-photo-gallery-bulkcreation.svg
-    :alt: PyPI-Server
+    :alt: pypi
     :target: https://pypi.org/project/simple-photo-gallery-bulkcreation/
 
 =================================
@@ -64,14 +64,13 @@ After the creation of a `config.ini`, the creation is pretty easy via running fo
 
     gallery-bulkcreation config-example.ini
 
-If everything works correctly you can preview the result via following command:
+If everything works correctly you can preview the result, e.g. via running a simple Python server:
 
 .. code-block::
 
-    python3 -m http.server --directory $GALLERY_ROOT/public
+    python3 -m http.server --directory GALLERY_ROOT/public
 
-and then checking it under the url http://localhost:8000 in your browser.
-
+and then checking it in your browser under http://localhost:8000.
 
 If you add photos to already existing galleries or add new galleries in the `config.ini` you can simple update the gallery by running the command again.
 
