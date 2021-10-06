@@ -94,7 +94,9 @@ class SimpleGallery:
             json.dumps(gallery_config, indent=4, separators=(",", ": "))
         )
 
-        spg_common.log("Gallery config stored in gallery.json")
+        spg_common.log(
+            f"Gallery config for {self.name} stored in {self.gallery_config_path}"
+        )
 
         return True
 
@@ -196,8 +198,6 @@ class SimpleGallery:
         spg_common.log(f"Creating the index.html for {self.name}...")
         gallery_build.build_html(gallery_config)
 
-        spg_common.log(
-            f"The gallery {self.name} was built successfully. Open {self.public_gallery_dir}"
-        )
+        spg_common.log(f"The gallery {self.name} was built successfully.")
 
         return True

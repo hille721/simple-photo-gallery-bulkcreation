@@ -10,7 +10,7 @@ import sys
 import jinja2
 import pkg_resources
 
-from simplegallery_bulkcreation.galleryclass import SimpleGallery
+from simplegallery_bulkcreation.galleryclass import SimpleGallery, spg_common
 
 
 def parse_args():
@@ -93,6 +93,8 @@ def create_overview_public(root_dir, data_path, defaults, galleries):
     data_dir = Path(data_path)
     title_photo = Path(defaults["title_photo"])
 
+    spg_common.log(f"Creating overview index page under {public_dir}...")
+
     # move css into public directory
     shutil.copytree(data_dir / "public", public_dir, dirs_exist_ok=True)
     if title_photo.exists():
@@ -101,6 +103,7 @@ def create_overview_public(root_dir, data_path, defaults, galleries):
 
     # generate root index.html
     write_overview_index(public_dir, defaults, galleries, data_dir / "templates")
+    spg_common.log(f"Overview index page {public_dir}/index.html created successfully!")
 
 
 def main():
@@ -120,14 +123,20 @@ def main():
 
     defaults, galleries = read_config(config_path=config_path)
     root_dir = defaults["gallery_root"]
+    seperator_line = "----------------------------------------"
 
+    spg_common.log(seperator_line)
     create_overview_public(root_dir, data_path, defaults, galleries)
+    spg_common.log(seperator_line)
 
     for gallery_conf in galleries:
         # TODO: Exception handling!
         try:
             gallery = SimpleGallery(root_dir, **gallery_conf)
             gallery.gallery_init()
+            spg_common.log(seperator_line)
             gallery.gallery_build()
+            spg_common.log(seperator_line)
         except Exception as exc:
             sys.exit(str(exc))
+    spg_common.log(f"All galleries were built successfully. Open {root_dir}/public.")
