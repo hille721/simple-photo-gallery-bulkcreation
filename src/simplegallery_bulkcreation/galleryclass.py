@@ -10,19 +10,7 @@ import simplegallery.common as spg_common
 from simplegallery import gallery_build
 from simplegallery.logic.gallery_logic import get_gallery_logic
 
-from simplegallery_bulkcreation.utils import copytree
-
-
-def _pltostr(path):
-    """
-    convert Pathlib object to absolute path as string
-
-    Args:
-        path (Path object): Pathobject to convert
-    """
-    if isinstance(path, str):
-        return path
-    return str(path.absolute())
+from simplegallery_bulkcreation.utils import copytree, pltostr
 
 
 class SimpleGallery:
@@ -79,11 +67,11 @@ class SimpleGallery:
         """Build the gallery config"""
 
         gallery_config = dict(
-            images_data_file=_pltostr(self.gallery_path / "images_data.json"),
-            public_path=_pltostr(self.public_gallery_dir),
-            templates_path=_pltostr(self.gallery_path / "templates"),
-            images_path=_pltostr(self.public_gallery_dir / "images" / "photos"),
-            thumbnails_path=_pltostr(self.public_gallery_dir / "images" / "thumbnails"),
+            images_data_file=pltostr(self.gallery_path / "images_data.json"),
+            public_path=pltostr(self.public_gallery_dir),
+            templates_path=pltostr(self.gallery_path / "templates"),
+            images_path=pltostr(self.public_gallery_dir / "images" / "photos"),
+            thumbnails_path=pltostr(self.public_gallery_dir / "images" / "thumbnails"),
             thumbnail_height=160,
             title=self.name,
             description=self.description,
@@ -125,10 +113,10 @@ class SimpleGallery:
         photos_dir = self.public_gallery_dir / "images" / "photos"
         if not photos_dir.exists():
             photos_dir.mkdir(parents=True)
-        spg_common.log(f"Moving all photos and videos to {_pltostr(photos_dir)}..")
+        spg_common.log(f"Moving all photos and videos to {pltostr(photos_dir)}..")
 
         for path in self.image_source.iterdir():
-            basename_lower = _pltostr(path).lower()
+            basename_lower = pltostr(path).lower()
             if (
                 basename_lower.endswith(".jpg")
                 or basename_lower.endswith(".jpeg")
@@ -176,7 +164,7 @@ class SimpleGallery:
             bool: returns True if everything worked fine
         """
 
-        gallery_config_path = _pltostr(self.gallery_config_path)
+        gallery_config_path = pltostr(self.gallery_config_path)
         gallery_config = spg_common.read_gallery_config(gallery_config_path)
 
         if not gallery_config:

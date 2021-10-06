@@ -13,6 +13,18 @@ else:
     LEGACY_SUPPORT = False
 
 
+def pltostr(path):
+    """
+    convert Pathlib object to absolute path as string
+
+    Args:
+        path (Path object): Pathobject to convert
+    """
+    if isinstance(path, str):
+        return path
+    return str(path.absolute())
+
+
 def copytree(src, dst):
     """
     Wrapper around `shutil.copytree` function to support also Python < 3.8 (see #3).
@@ -23,11 +35,11 @@ def copytree(src, dst):
         and using the `copy_tree` function of the `distutils.dir_util` module.
 
     Args:
-        src (Path): source path
-        dst (Path): destination path
+        src (Path object): source path
+        dst (Path object): destination path
     """
     if LEGACY_SUPPORT:
-        return copy_tree(str(src.absolute()), str(dst.absolute()))
+        return copy_tree(pltostr(src), pltostr(dst))
 
     return shutil.copytree(  # pylint: disable=unexpected-keyword-arg
         src, dst, dirs_exist_ok=True
